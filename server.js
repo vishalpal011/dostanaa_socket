@@ -1,6 +1,5 @@
 // const express = require('express');
 
-import db, { query } from "./db.js";
 import express from "express";
 import { Server } from 'socket.io';
 const app = express();
@@ -16,13 +15,13 @@ app.get("/", (req, resp) => {
     resp.status(200).json("socket is running");
 })
 
-app.get("/api/data-fetch", async (req, resp) => {
+// app.get("/api/data-fetch", async (req, resp) => {
 
-    let queryForFetch = "test";
-    let response = await query(queryForFetch);
-    console.log("response", response);
-    resp.status(200).json(response);
-})
+//     let queryForFetch = "test";
+//     let response = await query(queryForFetch);
+//     console.log("response", response);
+//     resp.status(200).json(response);
+// })
 
 
 const io = new Server(server, {
