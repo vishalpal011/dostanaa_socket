@@ -135,24 +135,24 @@ io.on("connection", (socket) => {
 
     socket.on("new message", (newMessageRecieved) => {
         console.log("new Message recieved",newMessageRecieved);
-        // const message = newMessageRecieved.message;
-        const allUsersId = newMessageRecieved.users_id;
-        const senderId = newMessageRecieved.sender_id;
-        allUsersId.forEach((userId) => {
-            if (senderId == userId) return;
-            socket.in(userId).emit("message received", newMessageRecieved);
-            console.log("hii");
-        });
+        // // const message = newMessageRecieved.message;
+        // const allUsersId = newMessageRecieved.users_id;
+        // const senderId = newMessageRecieved.sender_id;
+        // allUsersId.forEach((userId) => {
+        //     if (senderId == userId) return;
+        //     socket.in(userId).emit("message received", newMessageRecieved);
+        //     console.log("hii");
+        // });
 
 
 
 
           //new code
-        // const senderId = newMessageRecieved.senderId;
-        // const recieverId = newMessageRecieved.recieverId;
-        // const message = newMessageRecieved.message;
-        // const roomId = newMessageRecieved.roomId;
-        // socket.in(recieverId).emit("message received", newMessageRecieved);
+        const senderId = newMessageRecieved.sender_id;
+        const recieverId = newMessageRecieved.receiver_id;
+        const message = newMessageRecieved.message;
+        const roomId = newMessageRecieved.room_id;
+        socket.in(recieverId).emit("message received", newMessageRecieved);
 
     });
 
