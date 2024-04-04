@@ -152,6 +152,7 @@ io.on("connection", (socket) => {
         const recieverId = newMessageRecieved.receiver_id;
         const message = newMessageRecieved.message;
         const roomId = newMessageRecieved.room_id;
+        const type = 'receiver';
         socket.in(+recieverId).emit("message received", newMessageRecieved);
 
     });
