@@ -107,7 +107,7 @@ io.on("connection", (socket) => {
     console.log("Connected to socket.io");
     socket.on("setup", (userId) => {
         console.log("user_Data", userId);
-        socket.join(userId);
+        socket.join(+userId);
         socket.emit("connected",userId);
     });
 
@@ -152,7 +152,7 @@ io.on("connection", (socket) => {
         const recieverId = newMessageRecieved.receiver_id;
         const message = newMessageRecieved.message;
         const roomId = newMessageRecieved.room_id;
-        socket.in(recieverId).emit("message received", newMessageRecieved);
+        socket.in(+recieverId).emit("message received", newMessageRecieved);
 
     });
 
