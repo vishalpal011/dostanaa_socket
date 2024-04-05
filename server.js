@@ -43,13 +43,13 @@ io.on("connection", (socket) => {
         const recieverId = newMessageRecieved.receiver_id;
         const message = newMessageRecieved.message;
         const roomId = newMessageRecieved.room_id;
-        let image = newMessageRecieved.image;
+        const image = newMessageRecieved.image;
         
-            if (image === null) {
-                image = '';
-            }
-           // socket.in(+recieverId).emit("message received", newMessageRecieved);
-         socket.in(+recieverId).emit("message received", { senderId, recieverId, message, roomId, image });
+            // if (image === null) {
+            //     image = '';
+            // }
+           socket.in(+recieverId).emit("message received", newMessageRecieved);
+         // socket.in(+recieverId).emit("message received", { senderId, recieverId, message, roomId, image });
         });
 
 
