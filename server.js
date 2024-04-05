@@ -44,10 +44,7 @@ io.on("connection", (socket) => {
         const message = newMessageRecieved.message;
         const roomId = newMessageRecieved.room_id;
         const image = newMessageRecieved.image;
-
-            if (image === null || image === '') {
-                image = 'blank';  
-            }
+        
             socket.in(+recieverId).emit("message received", newMessageRecieved);
         });
 
