@@ -43,10 +43,10 @@ io.on("connection", (socket) => {
         const recieverId = newMessageRecieved.receiver_id;
         const message = newMessageRecieved.message;
         const roomId = newMessageRecieved.room_id;
-        const messageType = newMessageRecieved.message_type;
+        const image = newMessageRecieved.image_data;
 
         // socket.in(+recieverId).emit("message received", newMessageRecieved);
-        if(messageType == 'image')
+        if(image)
         {
             const imageData = newMessageRecieved.image_data; // Assuming image_data contains the image data
             io.to(roomId).emit('receive image', { senderId, receiverId, image_data: imageData });
